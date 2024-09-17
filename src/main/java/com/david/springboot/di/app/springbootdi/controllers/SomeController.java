@@ -14,9 +14,9 @@ import com.david.springboot.di.app.springbootdi.services.ProductService;
 @RequestMapping("/api")
 public class SomeController {
 
-    private ProductService productService;
+    private ProductService productService = new ProductService();
 
-    @GetMapping("/")
+    @GetMapping()
     public List<Product> list() {
 
         return productService.findAll();
