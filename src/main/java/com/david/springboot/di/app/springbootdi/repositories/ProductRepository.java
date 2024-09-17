@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.david.springboot.di.app.springbootdi.models.Product;
 
+//se optienen solo los datos
 public class ProductRepository {
 
     private List<Product> data;
