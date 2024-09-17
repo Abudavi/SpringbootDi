@@ -14,9 +14,11 @@ public class ProductService {
     public List<Product> findAll() {
         // se tomo el precio y se le sumo un 25% de impuesto
         return repository.findAll().stream().map(p -> {
-            Double priceImp = p.getPrice() * 1.25d;
-            Product newProduct = new Product(p.getId(), p.getName(), priceImp.longValue());
-
+            Double priceTax = p.getPrice() * 1.25d;
+            // Product newProduct = new Product(p.getId(), p.getName(),
+            // priceImp.longValue());//una manera de manejar imutabilidad
+            Product newProduct = (Product) p.clone();
+            newProduct.setPrice(priceTax.longValue());
             return newProduct;
         }).collect(Collectors.toList());
     }
