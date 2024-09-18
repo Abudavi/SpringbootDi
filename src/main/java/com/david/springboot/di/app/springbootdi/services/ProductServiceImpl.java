@@ -7,10 +7,11 @@ import com.david.springboot.di.app.springbootdi.models.Product;
 import com.david.springboot.di.app.springbootdi.repositories.ProductRepositoryImpl;
 
 //en el service se maneja la logica de negocio
-public class ProductServiceImpl {
+public class ProductServiceImpl implements ProductService {
 
     private ProductRepositoryImpl repository = new ProductRepositoryImpl();
 
+    @Override
     public List<Product> findAll() {
         // se tomo el precio y se le sumo un 25% de impuesto
         return repository.findAll().stream().map(p -> {
@@ -23,6 +24,7 @@ public class ProductServiceImpl {
         }).collect(Collectors.toList());
     }
 
+    @Override
     public Product findById(Long id) {
         return repository.findById(id);
     }
