@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ public class ProductServiceImpl implements ProductService {
     private IProductRepository repository;
     @Autowired
     private Environment environment;
+    @Value("${config.price.tax}")
+    private double tax;
 
     public ProductServiceImpl(@Qualifier("productList") IProductRepository repository) {// qualifier para
                                                                                         // intectar mediante
@@ -27,6 +30,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findAll() {
+        System.out.println(tax);
         // se tomo el precio y se le sumo un 25% de impuesto
         return repository.findAll().stream().map(p -> {
             Double priceTax = p.getPrice() * environment.getProperty("config.price.tax", Double.class);
