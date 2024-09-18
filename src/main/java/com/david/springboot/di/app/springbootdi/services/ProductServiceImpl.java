@@ -22,9 +22,9 @@ public class ProductServiceImpl implements ProductService {
     @Value("${config.price.tax}")
     private double tax;
 
-    public ProductServiceImpl(@Qualifier("productList") IProductRepository repository) {// qualifier para
-                                                                                        // intectar mediante
-                                                                                        // el nombre
+    public ProductServiceImpl(@Qualifier("productJson") IProductRepository repository) {// qualifier para
+        // intectar mediante
+        // el nombre
         this.repository = repository;
     }
 
