@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.david.springboot.di.app.springbootdi.models.Product;
 import com.david.springboot.di.app.springbootdi.repositories.IProductRepository;
 
 //en el service se maneja la logica de negocio
-@Component
+@Service
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
