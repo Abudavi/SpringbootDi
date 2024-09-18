@@ -3,9 +3,12 @@ package com.david.springboot.di.app.springbootdi.repositories;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.david.springboot.di.app.springbootdi.models.Product;
 
 //se optienen solo los datos
+@Component
 public class ProductRepositoryImpl implements IProductRepository {
 
     private List<Product> data;
