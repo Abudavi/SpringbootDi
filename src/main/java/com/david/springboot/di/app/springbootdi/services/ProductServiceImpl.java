@@ -7,7 +7,7 @@ import com.david.springboot.di.app.springbootdi.models.Product;
 import com.david.springboot.di.app.springbootdi.repositories.ProductRepositoryImpl;
 
 //en el service se maneja la logica de negocio
-public class ProductService {
+public class ProductServiceImpl {
 
     private ProductRepositoryImpl repository = new ProductRepositoryImpl();
 
