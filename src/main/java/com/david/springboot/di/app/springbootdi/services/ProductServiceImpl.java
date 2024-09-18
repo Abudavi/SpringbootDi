@@ -3,7 +3,9 @@ package com.david.springboot.di.app.springbootdi.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import com.david.springboot.di.app.springbootdi.models.Product;
@@ -14,6 +16,8 @@ import com.david.springboot.di.app.springbootdi.repositories.IProductRepository;
 public class ProductServiceImpl implements ProductService {
 
     private IProductRepository repository;
+    @Autowired
+    private Environment environment;
 
     public ProductServiceImpl(@Qualifier("productList") IProductRepository repository) {// qualifier para
                                                                                         // intectar mediante
@@ -25,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAll() {
         // se tomo el precio y se le sumo un 25% de impuesto
         return repository.findAll().stream().map(p -> {
-            Double priceTax = p.getPrice() * 1.25d;
+            Double priceTax = p.getPrice() * environment.getProperty("config.price.tax", Double.class);
             // Product newProduct = new Product(p.getId(), p.getName(),
             // priceImp.longValue());//una manera de manejar imutabilidad
             Product newProduct = (Product) p.clone();
