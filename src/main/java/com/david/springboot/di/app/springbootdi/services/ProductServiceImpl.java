@@ -3,13 +3,18 @@ package com.david.springboot.di.app.springbootdi.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.david.springboot.di.app.springbootdi.models.Product;
 import com.david.springboot.di.app.springbootdi.repositories.ProductRepositoryImpl;
 
 //en el service se maneja la logica de negocio
+@Component
 public class ProductServiceImpl implements ProductService {
 
-    private ProductRepositoryImpl repository = new ProductRepositoryImpl();
+    @Autowired
+    private ProductRepositoryImpl repository;
 
     @Override
     public List<Product> findAll() {
