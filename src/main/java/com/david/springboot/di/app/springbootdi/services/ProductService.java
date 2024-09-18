@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.david.springboot.di.app.springbootdi.models.Product;
-import com.david.springboot.di.app.springbootdi.repositories.ProductRepository;
+import com.david.springboot.di.app.springbootdi.repositories.ProductRepositoryImpl;
 
 //en el service se maneja la logica de negocio
 public class ProductService {
 
-    private ProductRepository repository = new ProductRepository();
+    private ProductRepositoryImpl repository = new ProductRepositoryImpl();
 
     public List<Product> findAll() {
         // se tomo el precio y se le sumo un 25% de impuesto
